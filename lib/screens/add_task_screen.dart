@@ -38,9 +38,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              //callback start
               onChanged: (newValue) {
                 newTaskTitle = newValue;
               },
+              //callback end
             ),
             FlatButton(
               child: Text(
