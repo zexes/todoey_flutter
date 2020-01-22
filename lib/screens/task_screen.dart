@@ -11,7 +11,6 @@ import 'add_task_screen.dart';
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Task> tasks = Provider.of<TaskData>(context).tasks;
 
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
@@ -64,7 +63,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  tasks.length == null ? '0 task' : '${tasks.length} tasks',
+                  '${Provider.of<TaskData>(context).taskCount}',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
