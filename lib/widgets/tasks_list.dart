@@ -15,11 +15,13 @@ class TasksList extends StatelessWidget {
             final task = taskData
                 .tasks[index]; // using final i can remover dataType Task
             return TaskTile(
-                taskTitle: task.name,
-                isChecked: task.isDone,
-                checkboxCallback: (checkboxState) {
-                  taskData.updateTask(task);
-                });
+              taskTitle: task.name,
+              isChecked: task.isDone,
+              checkboxCallback: (checkboxState) {
+                taskData.updateTask(task);
+              },
+              longPress: () => taskData.deleteTask(task),
+            );
           },
           itemCount: taskData.taskCount,
         );
