@@ -8,7 +8,7 @@ class TasksList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<TaskData>(
-      builder: (context, taskData, child){
+      builder: (context, taskData, child) {
         return ListView.builder(
           reverse: false,
           itemBuilder: (context, index) {
@@ -16,9 +16,7 @@ class TasksList extends StatelessWidget {
                 taskTitle: taskData.tasks[index].name,
                 isChecked: taskData.tasks[index].isDone,
                 checkboxCallback: (checkboxState) {
-//              setState(() {
-//                widget.tasks[index].toggleDone();
-//              });
+                  taskData.tasks[index].toggleDone();
                 });
           },
           itemCount: taskData.taskCount,

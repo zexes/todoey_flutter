@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/model/task_data.dart';
-import 'package:todoey_flutter/model/task.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
 
 import '../constants.dart';
@@ -11,7 +10,6 @@ import 'add_task_screen.dart';
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
@@ -21,15 +19,7 @@ class TasksScreen extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             //callback usage
-            builder: (context) => AddTaskScreen(
-              addTaskCallback: (newTaskTitle) {
-//                setState(() {
-//                  tasks.add(Task(name: newTaskTitle));
-//                });
-                Navigator.pop(context);
-              },
-              //callback usage
-            ),
+            builder: (context) => AddTaskScreen(),
           );
         },
       ),
@@ -63,7 +53,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${Provider.of<TaskData>(context).taskCount}',
+                  '${Provider.of<TaskData>(context).taskCount} tasks',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
