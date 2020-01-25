@@ -20,7 +20,40 @@ class TasksList extends StatelessWidget {
               checkboxCallback: (checkboxState) {
                 taskData.updateTask(task);
               },
-              longPress: () => taskData.deleteTask(task),
+              longPress: () {
+                showDialog<void>(
+                    barrierDismissible: true,
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.lightBlue[50],
+                        title: Text('Delete?'),
+                        content: Text(
+                          'Do you want to delete?',
+                          style: TextStyle(fontSize: 20.0),
+                        ),
+                        actions: <Widget>[
+                          FlatButton(
+                              child:
+                                  Text('No', style: TextStyle(fontSize: 20.0)),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              }),
+                          FlatButton(
+                              child:
+                                  Text('Yes', style: TextStyle(fontSize: 20.0)),
+                              onPressed: () {
+                                taskData.deleteTask(task);
+                                Navigator.of(context).pop();
+                              }),
+                        ],
+                        elevation: 24.0,
+                        shape: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                        ),
+                      );
+                    });
+              },
             );
           },
           itemCount: taskData.taskCount,
